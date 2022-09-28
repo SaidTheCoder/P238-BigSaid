@@ -1,3 +1,5 @@
+#importing the library files
+
 from flask.cli import FlaskGroup
 from app import create_app, db
 from flask import current_app
@@ -15,8 +17,9 @@ from app.models.editor.company_products import CompanyProducts
 from app.models.editor.company_orders import CompanyOrders
 from app.models.editor.order_item import OrderItems
 
-cli = FlaskGroup(create_app=create_app)
 
+cli = FlaskGroup(create_app=create_app)
+#making a list
 user_json = [
 	{
 		"name": "John Doe",
@@ -190,6 +193,7 @@ product_json = [
 	}
 ]
 
+#creating the functions
 def recreate_db():
 	db.drop_all()
 	db.create_all()
@@ -244,6 +248,7 @@ def seeder():
 				pass
 
 @cli.command()
+#making a function for recreate_db and seeder
 def rsd():
 	# if current_app.config.get('ENV') not in ('development', 'test', 'testing'):
 	#   print("ERROR: seed-db only allowed in development and testing env.")
